@@ -1,0 +1,214 @@
+/* ============================= */
+/* VARIABLES */
+/* ============================= */
+
+:root {
+    --tec-blue: #1a53ff;
+    --tec-dark-blue: #003399;
+    --tecmilenio-green: #00a859;
+    --tecsalud-teal: #008296;
+    --light-gray: #f8f9fa;
+    --border-radius: 12px;
+}
+
+/* ============================= */
+/* BASE */
+/* ============================= */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--light-gray);
+    color: #333;
+    margin: 0;
+}
+
+h1, h2, h3 {
+    margin: 0 0 10px 0;
+}
+
+/* ============================= */
+/* HERO */
+/* ============================= */
+
+.hero {
+    background-color: var(--tec-blue);
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+/* ============================= */
+/* BOTONES */
+/* ============================= */
+
+.btn-main {
+    background-color: white;
+    color: var(--tec-blue);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-main:hover {
+    background-color: #e0e0e0;
+}
+
+.btn-outline {
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================= */
+/* BENEFICIOS */
+/* ============================= */
+
+.benefit-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.icon-circle {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+/* ============================= */
+/* GRID DE CAUSAS */
+/* ============================= */
+
+.cause-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+.cause-card {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+}
+
+.cause-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.cause-logo {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.cause-content {
+    padding: 25px;
+    color: white;
+    flex-grow: 1;
+}
+
+.tec-bg {
+    background: linear-gradient(180deg, var(--tec-dark-blue) 0%, var(--tec-blue) 100%);
+}
+
+.tecmilenio-bg {
+    background-color: var(--tecmilenio-green);
+}
+
+.tecsalud-bg {
+    background-color: var(--tecsalud-teal);
+}
+
+.cause-content ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.9rem;
+    margin: 15px 0;
+}
+
+.cause-content ul li::before {
+    content: "• ";
+    color: white;
+}
+
+/* ============================= */
+/* FORMULARIO DONACIÓN */
+/* ============================= */
+
+#form-donacion {
+    display: none;
+    background: white;
+    padding: 50px 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    max-width: 700px;
+    margin: 60px auto;
+}
+
+#form-donacion h2 {
+    text-align: center;
+    color: var(--tec-dark-blue);
+    margin-bottom: 30px;
+}
+
+#donationForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#donationForm input,
+#donationForm textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+#donationForm input:focus,
+#donationForm textarea:focus {
+    outline: none;
+    border-color: var(--tec-blue);
+    box-shadow: 0 0 0 3px rgba(26, 83, 255, 0.15);
+}
+
+#donationForm textarea {
+    resize: none;
+    height: 100px;
+}

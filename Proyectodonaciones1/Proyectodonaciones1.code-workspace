@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "Proyectodonaciones1",
+			"path": "."
+		},
+		{
+			"name": "img",
+			"path": "../ProyectoDonaciones/donaciones/img"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Proyectodonaciones1"
+	}
+}

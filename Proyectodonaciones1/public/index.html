@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Certificados Digitales - Maqueta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header style="background: white; padding: 15px 50px; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center;">
+    <strong style="color: #003399;">🎓 Certificados Digitales de Donación</strong>
+    <span style="font-size: 0.8rem; color: #666;">Líderes del Mañana</span>
+</header>
+
+<section class="hero">
+    <h1>Transforma Vidas con tu Donación</h1>
+    <p>Regala educación y bienestar a través de certificados digitales.</p>
+    <button class="btn-main" onclick="abrirFormulario('General')">Comenzar Ahora</button>
+</section>
+
+<main class="container" style="max-width: 1100px; margin: 50px auto; padding: 0 20px;">
+
+    <h2 style="text-align: center; margin-bottom: 40px;">¿Qué son los Certificados Digitales?</h2>
+
+    <div class="cause-grid" style="margin-bottom: 60px;">
+        <div class="benefit-card">
+            <div class="icon-circle">📄</div>
+            <h3>Certificado Personalizado</h3>
+            <p>Incluye tu mensaje y logo en cada certificado digital.</p>
+        </div>
+        <div class="benefit-card">
+            <div class="icon-circle">📈</div>
+            <h3>Beneficio Fiscal</h3>
+            <p>Recibe tu factura inmediata para deducción de impuestos.</p>
+        </div>
+        <div class="benefit-card">
+            <div class="icon-circle">🎁</div>
+            <h3>Regalo Significativo</h3>
+            <p>Envía educación y esperanza como un regalo especial.</p>
+        </div>
+    </div>
+
+    <h2 style="text-align: center; margin-bottom: 40px;">Elige tu Causa</h2>
+
+    <div class="cause-grid">
+
+        <div class="cause-card">
+            <div class="cause-logo">
+                <img src="img/tec.png" width="140">
+            </div>
+            <div class="cause-content tec-bg">
+                <h3>Tecnológico de Monterrey</h3>
+                <p>Apoya a estudiantes talentosos a través del programa Líderes del Mañana.</p>
+                <ul>
+                    <li>Becas para educación superior</li>
+                    <li>Desarrollo de líderes</li>
+                </ul>
+                <button class="btn-outline" onclick="abrirFormulario('Tecnológico de Monterrey')">
+                    Donar al TEC
+                </button>
+            </div>
+        </div>
+
+        <div class="cause-card">
+            <div class="cause-logo">
+                <img src="img/tecmilenio.png" width="140">
+            </div>
+            <div class="cause-content tecmilenio-bg">
+                <h3>TecMilenio</h3>
+                <p>Impulsa la educación de calidad y accesible para más mexicanos.</p>
+                <ul>
+                    <li>Modelo educativo de felicidad</li>
+                    <li>Competencias prácticas</li>
+                </ul>
+                <button class="btn-outline" onclick="abrirFormulario('TecMilenio')">
+                    Donar a TecMilenio
+                </button>
+            </div>
+        </div>
+
+        <div class="cause-card">
+            <div class="cause-logo">
+                <img src="img/tecsalud.png" width="120">
+            </div>
+            <div class="cause-content tecsalud-bg">
+                <h3>TecSalud</h3>
+                <p>Apoya causas de salud y bienestar para comunidades vulnerables.</p>
+                <ul>
+                    <li>Atención médica</li>
+                    <li>Investigación en salud</li>
+                </ul>
+                <button class="btn-outline" onclick="abrirFormulario('TecSalud')">
+                    Donar a TecSalud
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SECCIÓN FORMULARIO DONACIÓN -->
+    <section id="form-donacion" style="display:none;">
+        <h2>Realizar Donación</h2>
+
+      <form id="donationForm" action="/api/donaciones" method="POST">
+    <input type="text" name="nombre" placeholder="Tu nombre" required>
+    <input type="email" name="email" placeholder="Tu correo electrónico" required>
+    <input type="number" name="monto" placeholder="Monto a donar (MXN)" required>
+    <input type="hidden" name="institucion" id="institucionSeleccionada">
+    <textarea name="mensaje" placeholder="Mensaje opcional"></textarea>
+    <button type="submit" class="btn-main">Confirmar Donación</button>
+</form>
+    </section>
+
+</main>
+
+<footer style="background: #1a1a1a; color: white; text-align: center; padding: 30px; margin-top: 50px;">
+    <p>© 2026 Grupo Educativo Tecnológico de Monterrey</p>
+    <p style="font-size: 0.8rem; color: #888;">Todas las donaciones son deducibles de impuestos.</p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+
+function abrirFormulario(institucion) {
+    document.getElementById('form-donacion').style.display = 'block';
+    document.getElementById('institucionSeleccionada').value = institucion;
+
+    window.scrollTo({
+        top: document.getElementById('form-donacion').offsetTop,
+        behavior: 'smooth'
+    });
+}
+
+document.getElementById('donationForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+
+   const response = await fetch('/api/donaciones', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+    alert(result.mensaje);
+    e.target.reset();
+});
+
+</script>
+
+</body>
+</html>
